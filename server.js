@@ -2,6 +2,7 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+const port = process.env.PORT || 3000;
 var app = express();
 
 console.log("server.js is now running")
@@ -26,10 +27,10 @@ app.use((req,res,next)=> {
   next();
 })
 
-app.use((req,res,next)=>{
-  res.render('maintenance.hbs')
-
-})
+// app.use((req,res,next)=>{
+//   res.render('maintenance.hbs')
+//
+// })
 
 //middleware to teach express to read a static link
 //app.use registers a middleware
@@ -75,6 +76,6 @@ app.get('/bad',(req,res)=>{
 //Need the app to listen, this binds
 //the app to port 3000
 //Second argument is a function that runs when file is run
-app.listen(3000,()=>{
-  console.log('Server is up on port 3000')
+app.listen(port,()=>{
+  console.log(`Server is up on port ${port}`)
 });
